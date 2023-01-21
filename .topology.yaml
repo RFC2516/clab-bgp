@@ -1,0 +1,26 @@
+name: bgp
+# Total Requirements
+# CPU: 3 Cores
+# RAM: 12 GB
+topology:
+  kinds:
+    vr-csr:
+      image: vrnetlab/vr-csr:17.03.04
+    # Default user credentials admin:admin
+    # eth0: management port
+    # eth1-144: data ports
+    # This means that the "eth0" represents "gi1"
+    # because the interface mapping on a CSR does not start at "gi0"
+  nodes:
+    R1:
+      kind: vr-csr
+    R2:
+      kind: vr-csr
+    R3:
+      kind: vr-csr
+    R4:
+      kind: vr-csr
+  links:
+  - endpoints: ["R1:eth1", "R2:eth1"]
+  - endpoints: ["R2:eth2", "R3:eth2"]
+  - endpoints: ["R2:eth3", "R4:eth3"]
