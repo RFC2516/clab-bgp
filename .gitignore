@@ -2,3 +2,4 @@
 *.bak
 __pycache__
 debug.yaml
+*key*
