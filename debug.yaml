@@ -1,0 +1,16 @@
+---
+- name: "Ansible | List all known variables and facts"
+  hosts: all
+  gather_facts: false
+  vars_files: 
+    - ./labs/{{ lab }}/{{ inventory_hostname }}.yaml
+  tasks:
+    - name: debug the hostvars
+      ansible.builtin.debug:
+        var: hostvars[inventory_hostname]
+    - name: debug the groupvars
+      ansible.builtin.debug:
+        var: groups
+    - name: debug the moduble variables
+      ansible.builtin.debug:
+        var: vars

@@ -1,0 +1,16 @@
+---
+- hosts: all
+  gather_facts: no
+
+  vars:
+    ansible_connection: ansible.netcommon.network_cli
+    ansible_network_os: cisco.ios.ios
+    ansible_become: yes
+    ansible_become_method: enable
+
+  tasks:
+    - name: backup conf
+      ios_config:
+        backup: yes
+    - name: groom files
+      command: find ./backup/ -type f -name "*_config.*" -exec sh -c 'router_num=$(basename "$1" | cut -d "-" -f3 | cut -d "_" -f1); dest_dir="./clab-ospf/$router_num/config/"; mv -v "$1" "$dest_dir/startup-config.cfg"' sh {} \;

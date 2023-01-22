@@ -1,0 +1,173 @@
+{
+  "name": "bgp",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-bdfc0d16132f",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "2001:172:20:20::/64",
+        "ipv6-gw": "2001:172:20:20::1",
+        "mtu": "1500",
+        "external-access": true
+      }
+    }
+  },
+  "nodes": {
+    "R1": {
+      "index": "0",
+      "shortname": "R1",
+      "longname": "clab-bgp-R1",
+      "fqdn": "R1.bgp.io",
+      "group": "",
+      "labdir": "/root/labs/routing/bgp/clab-bgp/R1",
+      "kind": "vr-csr",
+      "image": "vrnetlab/vr-csr:17.03.04",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-bdfc0d16132f",
+        "clab-node-group": "",
+        "clab-node-kind": "vr-csr",
+        "clab-node-lab-dir": "/root/labs/routing/bgp/clab-bgp/R1",
+        "clab-node-name": "R1",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/labs/routing/bgp/topology.yaml",
+        "containerlab": "bgp"
+      }
+    },
+    "R2": {
+      "index": "1",
+      "shortname": "R2",
+      "longname": "clab-bgp-R2",
+      "fqdn": "R2.bgp.io",
+      "group": "",
+      "labdir": "/root/labs/routing/bgp/clab-bgp/R2",
+      "kind": "vr-csr",
+      "image": "vrnetlab/vr-csr:17.03.04",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.5",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::5",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-bdfc0d16132f",
+        "clab-node-group": "",
+        "clab-node-kind": "vr-csr",
+        "clab-node-lab-dir": "/root/labs/routing/bgp/clab-bgp/R2",
+        "clab-node-name": "R2",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/labs/routing/bgp/topology.yaml",
+        "containerlab": "bgp"
+      }
+    },
+    "R3": {
+      "index": "2",
+      "shortname": "R3",
+      "longname": "clab-bgp-R3",
+      "fqdn": "R3.bgp.io",
+      "group": "",
+      "labdir": "/root/labs/routing/bgp/clab-bgp/R3",
+      "kind": "vr-csr",
+      "image": "vrnetlab/vr-csr:17.03.04",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-bdfc0d16132f",
+        "clab-node-group": "",
+        "clab-node-kind": "vr-csr",
+        "clab-node-lab-dir": "/root/labs/routing/bgp/clab-bgp/R3",
+        "clab-node-name": "R3",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/labs/routing/bgp/topology.yaml",
+        "containerlab": "bgp"
+      }
+    },
+    "R4": {
+      "index": "3",
+      "shortname": "R4",
+      "longname": "clab-bgp-R4",
+      "fqdn": "R4.bgp.io",
+      "group": "",
+      "labdir": "/root/labs/routing/bgp/clab-bgp/R4",
+      "kind": "vr-csr",
+      "image": "vrnetlab/vr-csr:17.03.04",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-bdfc0d16132f",
+        "clab-node-group": "",
+        "clab-node-kind": "vr-csr",
+        "clab-node-lab-dir": "/root/labs/routing/bgp/clab-bgp/R4",
+        "clab-node-name": "R4",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/labs/routing/bgp/topology.yaml",
+        "containerlab": "bgp"
+      }
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "R1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:31:f2:0e",
+        "peer": "z"
+      },
+      "z": {
+        "node": "R2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:b0:56:a2",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "R2",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:2a:d3:13",
+        "peer": "z"
+      },
+      "z": {
+        "node": "R3",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:01:79:39",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "R2",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:3f:f0:e9",
+        "peer": "z"
+      },
+      "z": {
+        "node": "R4",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:d9:fd:54",
+        "peer": "a"
+      }
+    }
+  ]
+}

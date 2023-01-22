@@ -1,0 +1,9 @@
+- name: configure ipv4 addresses on routers
+  cisco.ios.ios_l3_interfaces:
+    config:
+      - name: "{{ item.name }}"
+        ipv4:
+          - address: "{{ item.ipv4 }}"
+  loop: "{{ interfaces }}"
+  loop_control:
+    label: "{{ item.name }}"

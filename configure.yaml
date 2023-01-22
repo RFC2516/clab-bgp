@@ -1,0 +1,37 @@
+---
+- name: Setting up the lab
+  hosts: localhost
+  gather_facts: no
+  vars:
+    labs: 
+     - base
+     - neighbors
+  pre_tasks:
+    - name: Check that the lab extra vars is defined
+      assert: 
+        that: lab is defined
+        fail_msg: "You should state which lab you want configured. Valid labs are, {{ labs }}. Example ansible-playbook -i clab-bgp/ansible-inventory.yml -u admin -k configure.yaml -e lab=01_INTRO"
+    - name: check lab is valid
+      assert:
+        that: lab in labs
+        fail_msg: Valid labs are, {{ labs }}.
+    - name: Run unit tests
+      command: python3 -m unittest discover -s ./tests -p "pre_*.py"
+      register: test_result
+    - name: check if tests pass
+      assert:
+        that: test_result.rc == 0
+        fail_msg: "Some of the unit tests failed!"
+
+
+- name: Configure the routers
+  hosts: all
+  gather_facts: false
+  vars_files: 
+    - ./labs/{{ lab }}/{{ inventory_hostname }}.yaml
+  roles:
+    - role: addresses
+    - role: interfaces
+    - role: bgp
+    - role: banner
+    - role: baseline

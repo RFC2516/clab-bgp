@@ -1,0 +1,19 @@
+interfaces:
+  - name: Loopback1
+    ipv4: "{{ hostvars['clab-bgp-R1']['ansible_host'] + '/32' }}"
+  - name: GigabitEthernet2
+    ipv4: 172.30.0.1/30
+
+ansible_connection: ansible.netcommon.network_cli
+ansible_network_os: cisco.ios.ios
+ansible_become: yes
+ansible_become_method: enable
+
+bgp_config:
+  as_number: "64500"
+  bgp:
+    log_neighbor_changes: true
+  neighbors:
+  - neighbor_address: 172.30.0.2
+    description: 'ibgp->r2'
+    remote_as: "64500"

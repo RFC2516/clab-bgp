@@ -1,0 +1,5 @@
+- name: configure bgp
+  cisco.ios.ios_bgp_global:
+    config: "{{ bgp_config }}"
+    state: replaced
+  when: bgp_config is defined

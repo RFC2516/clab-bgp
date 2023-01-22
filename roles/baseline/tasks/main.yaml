@@ -1,0 +1,9 @@
+- name: configure interface up/down on routers.
+  cisco.ios.ios_config:
+    lines:
+    - line vty 0 530
+    - transport preferred none
+    - exit
+    - ip domain name clab.local
+    - ip http secure-server
+    - ip http authentication local
