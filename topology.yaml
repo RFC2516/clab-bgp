@@ -1,7 +1,7 @@
 name: bgp
 # Total Requirements
-# CPU: 3 Cores
-# RAM: 12 GB
+# CPU: 4 Cores
+# RAM: 16 GB
 topology:
   kinds:
     vr-csr:
