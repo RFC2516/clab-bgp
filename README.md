@@ -1,6 +1,6 @@
-# clab-bgp
+# Containerlab BGP Labs using CSR1000v
 
-This is a repository that I am creating to teach myself unit testing, portable infrastructure as code, configuration management and labbing content for the Cisco ENCOR Exam.
+This is a repository that I am creating to teach myself unit testing, portable infrastructure as code, configuration management and labbing content for the Cisco ENCOR Exam. I have provided all necessary files to complete the lab ***except*** for the Cisco CSR 1000v image. You must obtain your own Cisco CSR 1000v image legally via Cisco. After obtaining your image you can use the [vrnetlab](https://containerlab.dev/manual/vrnetlab/) project to containerize it for [Containerlab](https://containerlab.dev/manual/kinds/vr-csr/).
 
 ## Capabilities
 
@@ -35,7 +35,7 @@ Containerlab provides a CLI for orchestrating and managing container-based netwo
 
 You can get started with their install guide [here](https://containerlab.dev/install/). I am using Windows Subsystem for Linux as my local host, the warning provided in the documentation appears to be referring to WSL version 1. If you too choose to use the Windows Subsystem for Linux to run this project then ensure you are using [WSL version 2](https://containerlab.dev/install/).
 
-Please review the asciinema recording below for an idea on how to perform lab resource management using ContainerLab.
+Please click the asciinema recording below for an idea on how to perform lab resource management using ContainerLab.
 
 [![asciicast](https://asciinema.org/a/553695.png)](https://asciinema.org/a/553695)
 
@@ -50,7 +50,7 @@ The command can be understood when broken down as such:
  * `-u admin -k` the use of the `-u` flag tells ansible to log into the routers using the `admin` user. The `-k` flag tells ansible to prompt for a password.
  * `-e lab=base` the use of the `-e` flag tells ansible that there are [extra variables](https://www.redhat.com/sysadmin/extra-variables-ansible-playbook) to be used in the play. This extra variable is used to specify which lab's configuration you want to deploy.
 
-For an example of how to run the project and configure an example lab please consider this asciinema recording below.
+For an example of how to run the project and configure an example lab please click the asciinema recording below.
 
 [![asciicast](https://asciinema.org/a/553697.png)](https://asciinema.org/a/553697)
 
