@@ -1,3 +1,5 @@
 ansible-pylibssh
 ansible
 # pyats[full]
+scrapli
+ansible_vault

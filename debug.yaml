@@ -8,9 +8,12 @@
     - name: debug the hostvars
       ansible.builtin.debug:
         var: hostvars[inventory_hostname]
+      when: vars['bgp_config'] is defined
     - name: debug the groupvars
       ansible.builtin.debug:
         var: groups
+      when: vars['bgp_config'] is defined
     - name: debug the moduble variables
       ansible.builtin.debug:
         var: vars
+      when: vars['bgp_config'] is defined

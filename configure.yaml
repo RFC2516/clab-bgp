@@ -17,11 +17,12 @@
         fail_msg: Valid labs are, {{ labs }}.
     - name: Run unit tests
       command: python3 -m unittest discover -s ./tests -p "pre_*.py"
-      register: test_result
-    - name: check if tests pass
+      register: pre_result
+    - name: check if pre-tests pass
       assert:
-        that: test_result.rc == 0
+        that: pre_result.rc == 0
         fail_msg: "Some of the unit tests failed!"
+
 
 
 - name: Configure the routers
@@ -35,3 +36,15 @@
     - role: bgp
     - role: banner
     - role: baseline
+
+  post_tasks:
+    - name: Run post unit tests
+      command: python3 -m unittest discover -s ./tests -p "post_*.py"
+      register: post_result
+      when: vars['bgp_config'] is defined
+      delegate_to: localhost
+    - name: check if post-tests pass
+      assert:
+        that: post_result.rc == 0
+        fail_msg: "Some of the unit tests failed!"
+      when: vars['bgp_config'] is defined
