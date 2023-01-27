@@ -25,7 +25,12 @@ This is a repository that I am creating to teach myself unit testing, portable i
 
 ## Testing
 
-Currently I am only using Python Unit tests to ensure inventory sanity and to confirm configuration operational state for each lab.
+Currently I am only using Python Unit tests to ensure inventory sanity and to confirm configuration operational state for each lab. To install the packages required for the untitests you should run the commands in the order shown:
+
+1. `python3 -m venv .venv`
+2. `python3 -m pip install -r requirements.txt`
+
+These two commands should be ran *BEFORE* starting the lab.
 
 ## IaC
 
