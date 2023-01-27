@@ -39,7 +39,7 @@ You can get started with their install guide [here](https://containerlab.dev/ins
 
 Please click the asciinema recording below for an idea on how to perform lab resource management using ContainerLab.
 
-[![asciicast](https://asciinema.org/a/553695?autoplay=1)](https://asciinema.org/a/553695)
+[![asciicast](https://asciinema.org/a/553695.svg)](https://asciinema.org/a/553695?autoplay=1)
 
 
 ## Configuration Management
@@ -54,7 +54,7 @@ The command can be understood when broken down as such:
 
 For an example of how to run the project and configure an example lab please click the asciinema recording below.
 
-[![asciicast](https://asciinema.org/a/553697?autoplay=1)](https://asciinema.org/a/553697)
+[![asciicast](https://asciinema.org/a/553697.svg)](https://asciinema.org/a/553697?autoplay=1)
 
 ## Labs
 
@@ -109,7 +109,7 @@ Since the password for the vault is exported into an environmental variable it m
 
 For a visual guide on how to perform these steps please consider the following asciinema link below:
 
-[![asciicast](https://asciinema.org/a/555078?autoplay=1)](https://asciinema.org/a/555078)
+[![asciicast](https://asciinema.org/a/555078.svg)](https://asciinema.org/a/555078?autoplay=1)
 
 ## Additional Considerations
 
