@@ -1,0 +1,59 @@
+interfaces:
+  - name: Loopback1
+    ipv4: "{{ hostvars['clab-bgp-R2']['ansible_host'] + '/32' }}"
+  - name: GigabitEthernet2
+    ipv4: 192.0.2.2/30
+  - name: GigabitEthernet3
+    ipv4: 198.51.100.5/30
+  - name: GigabitEthernet4
+    ipv4: 203.0.113.1/30
+
+# 192.0.2.0/24 Assigned as TEST-NET-1, documentation and examples per RFC5737
+# 198.51.100.0/24 Assigned as TEST-NET-2, documentation and examples per RFC5737
+# 203.0.113.0/24 Assigned as TEST-NET-3, documentation and examples per RFC5737
+
+ansible_connection: ansible.netcommon.network_cli
+ansible_network_os: cisco.ios.ios
+ansible_become: yes
+ansible_become_method: enable
+
+bgp_config:
+  as_number: "55410"
+  bgp:
+    log_neighbor_changes: true
+  maximum_paths:
+    paths: 2
+  neighbors:
+  - neighbor_address: 192.0.2.1
+    description: 'ibgp->r1'
+    remote_as: "55410"
+  - neighbor_address: 198.51.100.6
+    description: 'ebgp->r3'
+    remote_as: "10540"
+  - neighbor_address: 203.0.113.2
+    description: 'ebgp->r4'
+    remote_as: "20910"
+  networks:
+    - address: 192.0.2.0
+      netmask: 255.255.255.0
+
+
+statics:
+  - address_families:
+    - afi: ipv4
+      routes:
+        - dest: 192.0.2.0/24
+          next_hops:
+            - interface: null0
+
+lines:
+  - line vty 0 530
+  - transport preferred none
+  - exit
+  - ip domain name clab.local
+  - ip http secure-server
+  - ip http authentication local
+  - end
+
+bgp_lines:
+  - bgp bestpath as-path multipath-relax
