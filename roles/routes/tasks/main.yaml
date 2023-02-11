@@ -1,11 +1,6 @@
 - name: configure static routes
   cisco.ios.ios_static_routes:
-    config:
-      address_families:
-        afi: item.family
-        routes:
-          - dest: item.route
-            next_hops:
-              - forward-routers_address: item.next-hop
+    config: "{{ statics }}"
+    state: overridden
   when: statics is defined
   loop: "{{ statics }}"

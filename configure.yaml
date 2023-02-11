@@ -6,6 +6,7 @@
     labs: 
      - base
      - neighbors
+     - multi-hop
   pre_tasks:
     - name: Check that the lab extra vars is defined
       assert: 
@@ -35,7 +36,8 @@
     - role: interfaces
     - role: bgp
     - role: banner
-    - role: baseline
+    - role: adhoc
+    - role: routes
 
   post_tasks:
     - name: Run post unit tests

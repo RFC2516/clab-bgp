@@ -1,3 +1,8 @@
+- name: cleanup any existing bgp
+  cisco.ios.ios_bgp_global:
+    state: purged
+  when: bgp_config is defined
+
 - name: configure bgp
   cisco.ios.ios_bgp_global:
     config: "{{ bgp_config }}"

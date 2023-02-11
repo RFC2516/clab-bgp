@@ -3,6 +3,7 @@
     config:
     - name: "{{ item.name }}"
       enabled: "{{ item.enabled | default('true') }}"
+    state: replaced
   loop: "{{ interfaces }}"
   loop_control:
     label: "{{ item.name }}"

@@ -41,7 +41,7 @@ def bgp_query(connection: scrapli.driver.core.IOSXEDriver) -> dict:
     return bgp_parsed['vrf']['default']['neighbor']
     
 # stop race conditions from occuring in which the router is recently configured and allow BGP time to establish before testing it.
-time.sleep(10) 
+time.sleep(8) 
 
 # execute the functions regardless of import via module or executed directly.
 neighbors = bgp_query(establish_connection(vault_data))

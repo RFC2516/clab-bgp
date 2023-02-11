@@ -1,0 +1,9 @@
+- name: base line commands
+  cisco.ios.ios_config:
+    lines: "{{ lines }}"
+
+- name: bgp line commands
+  cisco.ios.ios_config:
+    lines: "{{ bgp_lines }}"
+    parents: router bgp {{ bgp_config.as_number }}
+  when: (bgp_config is defined) and (bgp_lines is defined)

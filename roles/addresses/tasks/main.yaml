@@ -4,6 +4,7 @@
       - name: "{{ item.name }}"
         ipv4:
           - address: "{{ item.ipv4 }}"
+    state: replaced
   loop: "{{ interfaces }}"
   loop_control:
     label: "{{ item.name }}"
