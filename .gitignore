@@ -3,5 +3,6 @@
 __pycache__
 debug.yaml
 *key*
-clab-*
+clab-bgp/
+clab-bgp/*
 *vault*

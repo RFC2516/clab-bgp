@@ -1,0 +1,42 @@
+interfaces:
+  - name: Loopback1
+    ipv4: "{{ hostvars['clab-bgp-R4']['ansible_host'] + '/32' }}"
+  - name: GigabitEthernet4
+    ipv4: 203.0.113.2/30
+
+# 192.0.2.0/24 Assigned as TEST-NET-1, documentation and examples per RFC5737
+# 198.51.100.0/24 Assigned as TEST-NET-2, documentation and examples per RFC5737
+# 203.0.113.0/24 Assigned as TEST-NET-3, documentation and examples per RFC5737
+
+ansible_connection: ansible.netcommon.network_cli
+ansible_network_os: cisco.ios.ios
+ansible_become: yes
+ansible_become_method: enable
+
+bgp_config:
+  as_number: "20910"
+  bgp:
+    log_neighbor_changes: true
+  neighbors:
+  - neighbor_address: 203.0.113.1
+    description: 'ebgp->r2'
+    remote_as: "55410"
+  networks:
+    - address: 0.0.0.0
+      netmask: 0.0.0.0
+
+statics:
+  - address_families:
+    - afi: ipv4
+      routes:
+        - dest: 0.0.0.0/0
+          next_hops:
+            - forward_router_address: 10.0.0.2
+
+lines:
+  - line vty 0 530
+  - transport preferred none
+  - exit
+  - ip domain name clab.local
+  - ip http secure-server
+  - ip http authentication local
