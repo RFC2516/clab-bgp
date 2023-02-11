@@ -40,7 +40,7 @@ In this repository I am using [ContainerLab](https://containerlab.dev/) to serve
 Containerlab provides a CLI for orchestrating and managing container-based networking labs. It starts the containers, builds a virtual wiring between them to create lab topologies of users choice and manages labs lifecycle.
 ```
 
-You can get started with their install guide [here](https://containerlab.dev/install/). I am using Windows Subsystem for Linux as my local host, the warning provided in the documentation appears to be referring to WSL version 1. If you too choose to use the Windows Subsystem for Linux to run this project then ensure you are using [WSL version 2](https://containerlab.dev/install/).
+You can get started with their install guide [here](https://containerlab.dev/install/). I am using Windows Subsystem for Linux as my local host, the warning provided in the documentation appears to be referring to WSL version 1. If you too choose to use the Windows Subsystem for Linux to run this project then ensure you are using [WSL version 2](https://learn.microsoft.com/en-us/windows/wsl/install#check-which-version-of-wsl-you-are-running).
 
 Please click the asciinema recording below for an idea on how to perform lab resource management using ContainerLab.
 
