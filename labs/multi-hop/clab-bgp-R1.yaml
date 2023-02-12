@@ -1,3 +1,8 @@
+ansible_connection: ansible.netcommon.network_cli
+ansible_network_os: cisco.ios.ios
+ansible_become: yes
+ansible_become_method: enable
+
 interfaces:
   - name: Loopback1
     ipv4: "{{ hostvars['clab-bgp-R1']['ansible_host'] + '/32' }}"
@@ -6,10 +11,13 @@ interfaces:
 
 # 192.0.2.0/24 Assigned as TEST-NET-1, documentation and examples per RFC5737
 
-ansible_connection: ansible.netcommon.network_cli
-ansible_network_os: cisco.ios.ios
-ansible_become: yes
-ansible_become_method: enable
+lines:
+  - line vty 0 530
+  - transport preferred none
+  - exit
+  - ip domain name clab.local
+  - ip http secure-server
+  - ip http authentication local
 
 bgp_config:
   as_number: "55410"
@@ -19,11 +27,3 @@ bgp_config:
   - neighbor_address: 192.0.2.2
     description: 'ibgp->r2'
     remote_as: "55410"
-
-lines:
-  - line vty 0 530
-  - transport preferred none
-  - exit
-  - ip domain name clab.local
-  - ip http secure-server
-  - ip http authentication local
